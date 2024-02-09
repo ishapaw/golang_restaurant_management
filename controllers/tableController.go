@@ -165,7 +165,7 @@ func DeleteAllTables() gin.HandlerFunc {
     // Delete the document matching the filter
     result, err := tableCollection.DeleteMany(ctx, bson.M{})
     if err != nil {
-        fmt.Println("Error deleting document:", err)
+        fmt.Println("Error deleting the document:", err)
         return 
     }
 	defer cancel()

@@ -52,7 +52,7 @@ func GetOrder() gin.HandlerFunc {
 		defer cancel()
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while fetching the orders"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while fetching the order"})
 			return
 		}
 

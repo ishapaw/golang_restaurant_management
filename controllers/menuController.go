@@ -26,7 +26,7 @@ func GetMenus() gin.HandlerFunc {
 		defer cancel()
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing the menu items"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing the menus"})
 			return
 		}
 

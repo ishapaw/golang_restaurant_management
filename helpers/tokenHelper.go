@@ -108,7 +108,7 @@ func ValidateToken(signedToken string) (claims *SignedDetails, msg string) {
 	claims, ok := token.Claims.(*SignedDetails)
 
 	if !ok {
-		msg = fmt.Sprintf("the token is invalid")
+		msg = fmt.Sprintf("the Token is invalid")
 		msg = err.Error()
 		return
 	}

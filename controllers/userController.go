@@ -116,7 +116,7 @@ func SignUp() gin.HandlerFunc {
 		}
 
 		if count > 0 {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "email already exits"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "email already exists"})
 			return
 		}
 		//hash password

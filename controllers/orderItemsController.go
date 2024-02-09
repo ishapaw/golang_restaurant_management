@@ -31,7 +31,7 @@ func GetOrderItems() gin.HandlerFunc {
 		defer cancel()
 
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "error occured while listing orderitems"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "error occured while listing order items"})
 			return
 		}
 

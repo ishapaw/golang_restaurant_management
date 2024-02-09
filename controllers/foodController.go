@@ -29,7 +29,7 @@ func GetFoods() gin.HandlerFunc {
 		recordPerPage, err := strconv.Atoi(c.Query("recordPerPage"))
 
 		if err != nil || recordPerPage < 1 {
-			recordPerPage = 10
+			recordPerPage = 8
 		}
 
 		page, err := strconv.Atoi(c.Query("page"))

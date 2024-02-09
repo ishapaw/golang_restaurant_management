@@ -29,7 +29,7 @@ func DBInstance() *mongo.Client{
 		log.Fatal(err)
 	}
 
-	fmt.Println("connected to MongoDb")
+	fmt.Println("connected to MongoDb successfully")
 	return client
 
 }

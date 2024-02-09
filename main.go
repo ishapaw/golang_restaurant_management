@@ -18,6 +18,7 @@ func main() {
 		port = "9000"
 	}
 
+	
 	router := gin.New()
 	router.Use(gin.Logger())
 	routes.UserRoutes(router)

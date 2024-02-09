@@ -104,7 +104,7 @@ func CreateInvoice() gin.HandlerFunc {
 		defer cancel()
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing order items"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing order item"})
 			return
 		}
 
