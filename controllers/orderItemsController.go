@@ -85,11 +85,11 @@ func GetOrderItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-		orderItemId := c.Param("order_item_id")
+		orderItemId := c.Param("orderItem_id")
 
 		var orderItem models.OrderItem
 
-		err := orderItemCollection.FindOne(ctx, bson.M{"orderItem_id": orderItemId}).Decode(&orderItem)
+		err := orderItemCollection.FindOne(ctx, bson.M{"order_item_id": orderItemId}).Decode(&orderItem)
 		defer cancel()
 
 		if err != nil {
@@ -107,7 +107,7 @@ func UpdateOrderItem() gin.HandlerFunc {
 
 		var orderItem models.OrderItem
 
-		orderItemId := c.Param("order_item_id")
+		orderItemId := c.Param("orderItem_id")
 
 		filter := bson.M{"order_item_id": orderItemId}
 

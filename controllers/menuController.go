@@ -48,7 +48,7 @@ func GetMenu() gin.HandlerFunc {
 
 		var menu models.Menu
 
-		err := foodCollection.FindOne(ctx, bson.M{"menu_id": menuId}).Decode(&menu)
+		err := menuCollection.FindOne(ctx, bson.M{"menu_id": menuId}).Decode(&menu)
 
 		defer cancel()
 
@@ -113,18 +113,15 @@ func UpdateMenu() gin.HandlerFunc {
 		menuId := c.Param("menu_id")
 		filter := bson.M{"menu_id": menuId}
 
+		cnt, err1 := menuCollection.CountDocuments(ctx, bson.M{"menu_id": menuId})
+
+		if cnt<1 || err1 != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Cannot find this menu"})
+			return
+		}
+
 		var updateObj primitive.D
 
-		if menu.Start_Date != nil && menu.End_Date != nil {
-			if !inTimeSpan(*menu.Start_Date, *menu.End_Date, time.Now()) {
-				msg := "kindly retype the time"
-				c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
-				defer cancel()
-				return
-			}
-
-			updateObj = append(updateObj, bson.E{"start_date", menu.Start_Date})
-			updateObj = append(updateObj, bson.E{"end_date", menu.End_Date})
 
 			if menu.Name != "" {
 				updateObj = append(updateObj, bson.E{"name", menu.Name})
@@ -155,12 +152,13 @@ func UpdateMenu() gin.HandlerFunc {
 			if err != nil {
 				msg := "Menu update failed"
 				c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+				return
 			}
 
 			defer cancel()
 
 			c.JSON(http.StatusOK, result)
-		}
+		
 
 	}
 }

@@ -47,7 +47,7 @@ func GetOrder() gin.HandlerFunc {
 
 		var order models.Order
 
-		err := foodCollection.FindOne(ctx, bson.M{"order_id": orderId}).Decode(&order)
+		err := orderCollection.FindOne(ctx, bson.M{"order_id": orderId}).Decode(&order)
 
 		defer cancel()
 

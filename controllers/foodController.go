@@ -138,7 +138,7 @@ func CreateFood() gin.HandlerFunc {
 
 		menu.Food_ids = append(menu.Food_ids, food.Food_id)
 
-		update := bson.M{"$set": bson.M{"food": menu.Food_ids}}
+		update := bson.M{"$set": bson.M{"food_ids": menu.Food_ids}}
 		menuCollection.UpdateOne(ctx, bson.M{"menu_id": food.Menu_id}, update)
 
 
